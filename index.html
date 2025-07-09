@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Scan Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>QR Code Scanner</h1>
+    <div id="scanner-container">
+      <div id="reader"></div>
+    </div>
+
+    <div id="fullscreen-gif-overlay">
+  <img src="celebrate.gif" alt="Scanned!" />
+</div>
+
+    <p id="status">Scanned 0 of 14 QR codes</p>
+    <ul id="scanned-list"></ul>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

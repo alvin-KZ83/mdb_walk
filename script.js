@@ -8,10 +8,19 @@ const listEl = document.getElementById("scanned-list");
 function updateStatus() {
   statusEl.textContent = `Scanned ${scannedCodes.size} of ${validCodes.length}`;
 
+  // Show milestone at 5 scans (only once)
+  if (scannedCodes.size === 5 && !updateStatus.milestoneShown) {
+    showMilestoneGif();
+    alert("🎉 You've scanned 5 QR codes! Keep going!");
+    updateStatus.milestoneShown = true;
+  }
+
+  // Final completion
   if (scannedCodes.size === validCodes.length) {
     alert("✅ All QR codes scanned!");
   }
 }
+updateStatus.milestoneShown = false; // custom flag to show milestone only once
 
 function showScanAnimation() {
   const anim = document.getElementById("scan-animation");
@@ -54,6 +63,15 @@ function showFullscreenGif(readerInstance) {
   }, 2500);
 }
 
+function showMilestoneGif() {
+  const overlay = document.getElementById("milestone-gif-overlay");
+
+  overlay.style.display = "flex";
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 3000);
+}
 
 function onScanSuccess(decodedText) {
   if (!validCodes.includes(decodedText)) {
